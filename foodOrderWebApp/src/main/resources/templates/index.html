@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>A-Ha Food</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/index.css}"/>
+</head>
+
+<style>
+    body{
+        background: #f7f7f7;
+    }
+</style>
+<body>
+
+<!-- header section -->
+
+<header>
+    <a href="index.html" class="logo"><img th:src="@{/images/logo2.png}"></a>
+    <nav class="navbar">
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+        <a href="register.html">Create Account</a>
+        <a href="login.html">log in</a>
+    </nav>
+</header>
+
+<!-- Section -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>food made with love</h3>
+        <p>More than 10 years of experience in the food industry and considered as one of the top restaurants in the midwest region!</p>
+        <a href="cart.html" class="btn">order now</a>
+
+    </div>
+
+    <div class="image">
+        <img th:src="@{/images/img-1.webp}">
+    </div>
+
+
+</section>
+<footer class="footer">
+        <div><i class="fas fa-copyright"></i> 2021 A-HA Food. All Rights Reserved.
+        </div>
+</footer>
+
+</body>
+
+</html>
