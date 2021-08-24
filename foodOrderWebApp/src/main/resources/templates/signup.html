@@ -67,6 +67,10 @@
                 </div>
                 <div class="card-body">
                     <form class="row" th:action="@{/process_register}" method="post" th:object="${user}" >
+                        <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                            <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                        </div>
+
                         <p style="margin-left:10px">Please Select User Type: </p>
                         <div class="form-check" style="margin:3px">
                             <th:block th:each="role:${listRoles}">
@@ -77,22 +81,22 @@
                         </div>
 
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" placeholder="Username" th:field="*{username}" required>
+                            <input type="text" class="form-control" placeholder="Username" th:field="*{username}" required th:errorclass="is-invalid">
                         </div>
                         <div class="input-group form-group">
-                            <input type="password" class="form-control" placeholder="Password" th:field="*{password}" required>
+                            <input type="password" class="form-control" placeholder="Password" th:field="*{password}" required th:errorclass="is-invalid">
                         </div>
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" placeholder="First Name" th:field="*{firstName}" required>
+                            <input type="text" class="form-control" placeholder="First Name" th:field="*{firstName}" required th:errorclass="is-invalid">
                         </div>
                         <div class="input-group form-group">
-                            <input type="text" class="form-control" placeholder="Last Name" th:field="*{lastName}" required>
+                            <input type="text" class="form-control" placeholder="Last Name" th:field="*{lastName}" required th:errorclass="is-invalid">
                         </div>
                         <div class="input-group form-group">
-                            <input type="email" class="form-control" placeholder="Email" th:field="*{email}" required>
+                            <input type="email" class="form-control" placeholder="Email" th:field="*{email}" required th:errorclass="is-invalid">
                         </div>
                         <div class="input-group form-group">
-                            <input type="tel" class="form-control" placeholder="Phone" th:field="*{phone}" required>
+                            <input type="tel" class="form-control" placeholder="Phone" th:field="*{phone}" required th:errorclass="is-invalid">
                         </div>
 
 

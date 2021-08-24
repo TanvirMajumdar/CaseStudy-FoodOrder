@@ -37,11 +37,11 @@ public class User {
     @NonNull @Column(unique = true) @NotBlank
     String password;
 
-    @Size(min = 2, max = 30)
+    @Length(min = 1, message = "First name should not be empty")
     @NonNull @Column(unique = false) @NotBlank
     String firstName;
 
-    @Size(min = 2, max = 30)
+    @Length(min = 1, message = "Last name should not be empty")
     @NonNull @Column(unique = false) @NotBlank
     String lastName;
 
