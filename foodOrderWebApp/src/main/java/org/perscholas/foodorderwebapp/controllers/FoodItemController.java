@@ -52,4 +52,13 @@ public class FoodItemController {
         return "redirect:/fooditemlist";
     }
 
+    @GetMapping("/menu")
+    public String menu(Model model){
+        List<FoodItem> foodItems = foodItemService.listAll();
+        model.addAttribute("foodItems", foodItems);
+
+        return "menu";
+    }
+
+
 }

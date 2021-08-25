@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="text-center mt-3">
+        <table>
+            <tr th:each="image:${allImages}">
+                <td th:text="${image.id}"/>
+                <td> <img th:src="${image.imageName}"/> </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

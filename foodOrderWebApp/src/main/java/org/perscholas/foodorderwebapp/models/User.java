@@ -52,12 +52,12 @@ public class User {
     @NonNull @Column(unique = true) @NotBlank
     String phone;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @NonNull
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    Set<Role> roles = new HashSet<>();
-
+    Set<Role> roles= new HashSet<>();
 }

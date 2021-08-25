@@ -18,6 +18,10 @@ public class Role{
     Integer id;
     @NonNull @NotBlank
     @Column(length = 25, unique = true)
-    String name;
+    String role;
 
+    @Override
+    public String toString() {
+        return this.role;
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,6 +27,7 @@ public class UserController {
     @Autowired
     private RoleRepo roleRepo;
 
+
     @GetMapping("/signup")
     public String signup(Model model){
         List<Role> listRoles=roleRepo.findAll();
@@ -34,16 +36,20 @@ public class UserController {
         return "signup";
     }
 
-    @PostMapping("/process_register")
-    public String processRegistration(@Valid User user, BindingResult bindingResult){
 
+    @PostMapping("/process_register")
+    public ModelAndView processRegistration(@Valid User user, BindingResult bindingResult){
+        ModelAndView model = new ModelAndView();
         if (bindingResult.hasErrors()) {
-            return "signup";
+            model.setViewName("signup");
         }
         else {
-            userService.save(user);
-            return "registration_success";
+
+            userService.saveUser(user);
+            model.addObject("user", new User());
+            model.setViewName("registration_success");
         }
+        return model;
     }
 
 
