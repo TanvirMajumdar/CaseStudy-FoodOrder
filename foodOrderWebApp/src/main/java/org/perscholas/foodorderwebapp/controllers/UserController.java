@@ -28,6 +28,7 @@ public class UserController {
     private RoleRepo roleRepo;
 
 
+    //user sign up
     @GetMapping("/signup")
     public String signup(Model model){
         List<Role> listRoles=roleRepo.findAll();
@@ -37,6 +38,7 @@ public class UserController {
     }
 
 
+    //new user registration
     @PostMapping("/process_register")
     public ModelAndView processRegistration(@Valid User user, BindingResult bindingResult){
         ModelAndView model = new ModelAndView();
@@ -53,6 +55,7 @@ public class UserController {
     }
 
 
+    //to show the user list
     @GetMapping("/userlist")
     public String showUserList(Model model){
         List<User> userList=userRepo.findAll();
@@ -60,6 +63,7 @@ public class UserController {
         return "userlist";
     }
 
+    //to delete any user from the user list
     @RequestMapping("/deleteUser/{id}")
     public String deleteUser(@PathVariable(name = "id") long id) {
         userService.deleteUser(id);

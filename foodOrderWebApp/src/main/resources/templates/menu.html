@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>A-HA Food</title>
+    <title>Menu</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -53,6 +53,9 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/menu}">Menu</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{#}">Special Offer</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -88,6 +91,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Price</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -96,6 +100,9 @@
                             <td th:text="${foodItem.itemName}">Name</td>
                             <td th:text="${foodItem.itemDescription}">Description</td>
                             <td th:text="${foodItem.itemPrice}">Price</td>
+                            <td>
+                                <a th:href="@{/addToCart/{id}(id=${foodItem.itemId})}">Add To Cart</a>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

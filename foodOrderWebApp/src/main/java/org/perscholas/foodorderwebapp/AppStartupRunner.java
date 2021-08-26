@@ -39,8 +39,9 @@ public class AppStartupRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         log.info("**** Start adding sql statements ****");
-        roleRepo.save(new Role(1, "Admin"));
 
+        roleRepo.save(new Role(1, "Admin"));
+        roleRepo.save(new Role(2, "Customer"));
 
         User user=new User();
         Role userRole = roleRepo.findByRole("Admin");
@@ -54,8 +55,9 @@ public class AppStartupRunner implements CommandLineRunner {
         userRepo.save(user);
 
 
-        foodItemRepo.save(new FoodItem("Burger", "Hot and Spicy Burger", 4.99f));
-        foodItemRepo.save(new FoodItem("Sandwich", "Sliced bread egg sandwich", 3.99f));
+        foodItemRepo.save(new FoodItem("Burger", "Hot and Spicy Burger", 2.99f));
+        foodItemRepo.save(new FoodItem("Sandwich", "Sliced bread egg sandwich", 1.99f));
+        foodItemRepo.save(new FoodItem("French Fries", "Long and thin fries", 0.99f));
         log.info("**** End of sql statements ****");
     }
 

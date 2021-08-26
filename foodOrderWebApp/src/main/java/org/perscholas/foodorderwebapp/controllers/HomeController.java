@@ -10,11 +10,13 @@ import java.util.List;
 @Controller
 public class HomeController{
 
+    //index page
     @GetMapping("/index")
     public String index(){
         return "index";
     }
 
+    //login page
     @GetMapping("/login")
     public String login(){
         return "login";
