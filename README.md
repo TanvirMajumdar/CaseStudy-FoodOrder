@@ -1,7 +1,7 @@
-SUMMARY
+SUMMARY:
 A web application to allow customers to view food menu, order food after registering online and login, add item to the order. Also, admin can view user list, and add and modify menu item.
 
-FUNCTIONAL REQUIREMENTS
+FUNCTIONAL REQUIREMENTS:
 1.	Customer registration: If the customer wants to order food, he/she must register before ordering food. 
 2.	Customer login: If customer has an account, he/she must login using valid username/ password.
 3.	Modify the order: customer should be able to add items in the cart. 
@@ -11,7 +11,7 @@ FUNCTIONAL REQUIREMENTS
 7.	Order seen by the admin: The admin will be able to view the order placed by the customer. 
 
 
-User Stories
+User Stories:
 1.	As a user, I want to create a login username and password so that I can create my online account.
 2.	As a user, I want to register to my account so that I can enter my personal info.
 3.	As a user, I want to logout from my account so that nobody other than me can enter my account.
@@ -23,7 +23,7 @@ User Stories
 9.	As an administrator, I want to see the customer info so that I can make any adjustment. 
 
 
-Tech Stack Selected
+Tech Stack Selected:
 •	Frontend: HTML, CSS, Bootstrap
 •	Business Logic: Java
 •	Backend: Spring Boot, Thymeleaf, Hibernate, JPA, Lombok
