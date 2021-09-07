@@ -4,11 +4,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,35 +22,33 @@ public class User {
 
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "user_id", length = 11)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long userId;
 
     @Length(min = 5, message = "Your username must have at least 5 characters")
-    @NonNull @Column(unique = true) @NotBlank
+    @NonNull @Column(unique = true, length = 45) @NotBlank
     String username;
 
     @Length(min = 5, message = "Your password must have at least 5 characters")
-    @NonNull @Column(unique = true) @NotBlank
+    @NonNull @Column(unique = false, length = 100) @NotBlank
     String password;
 
     @Length(min = 1, message = "First name should not be empty")
-    @NonNull @Column(unique = false) @NotBlank
+    @NonNull @Column(name = "first_name", unique = false, length = 45) @NotBlank
     String firstName;
 
     @Length(min = 1, message = "Last name should not be empty")
-    @NonNull @Column(unique = false) @NotBlank
+    @NonNull @Column(name = "last_name", unique = false, length = 45) @NotBlank
     String lastName;
 
-    @NonNull @Column(unique = true) @NotBlank
-    @Email(message = "*Please provide a valid Email")
+    @NonNull @Column(unique = true, length = 45) @NotBlank
+    @Email(message = "Please provide a valid Email")
     String email;
 
-    @NonNull @Column(unique = true) @NotBlank
-    String phone;
 
     @NonNull
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),

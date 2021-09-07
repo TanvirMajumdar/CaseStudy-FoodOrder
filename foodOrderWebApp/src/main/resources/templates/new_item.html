@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>A-HA Food</title>
+    <title>New Item</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -41,19 +41,19 @@
                         <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
                     </li>
                     <div sec:authorize="isAnonymous()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Log In</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}">Log In</a>
+                        </li>
                     </div>
                     <div sec:authorize="isAnonymous()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/signup}">Create Account</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/signup}">Create Account</a>
+                        </li>
                     </div>
                     <div sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/menu}">Menu</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/menu}">Menu</a>
+                        </li>
                     </div>
 
                     <div sec:authorize="hasAuthority('ADMIN')">
@@ -80,27 +80,38 @@
     </nav>
 </header>
 
-<!-- Begin page content -->
-<main class="container box">
-    <div class="row">
-        <div class="col-4">
-            <div class="card text-dark mb-3" style="margin-top: 200px" >
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Made Food With Love</h5>
-                        <p class="card-text">More than 10 years of experience in the food industry and considered as one of the top restaurants in the midwest region!</p>
-                    </div>
+
+<main class="container" style="margin-top: 200px">
+
+    <div>
+        <div class="d-flex justify-content-center">
+            <div class="card" style="max-width: 400px;">
+                <div class="card-header">
+                    <h3 style="text-align: center">Create New Item</h3>
+                </div>
+                <div class="card-body">
+                    <form class="row" th:action="@{/console/item_added}" method="post" th:object="${item}" >
+
+                        <div class="input-group form-group m-2">
+                            <input type="text" class="form-control" placeholder="Item Name" th:field="*{itemName}" required>
+                        </div>
+                        <div class="input-group form-group m-2">
+                            <input type="text" class="form-control" placeholder="Item Description" th:field="*{itemDescription}" required>
+                        </div>
+                        <div class="input-group form-group m-2">
+                            <input type="text" class="form-control" placeholder="Item Price" th:field="*{itemPrice}" required>
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="mx-auto">
+                                <input class="btn btn-primary" type="submit" value="Save">
+                                <input class="btn btn-secondary" type="button" value="Cancel" id="buttonCancel">
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <div class="col-8">
-            <div class="container" style="margin-top: 100px; margin-left: 100px">
-                <img src="/img/g-1.jpg" class="rounded" alt="Food" width="700" height="500">
-            </div>
-
-        </div>
-
     </div>
 </main>
 
@@ -109,5 +120,15 @@
         <span class="text-muted"><i class="fas fa-copyright"></i> 2021 A-Ha Food</span>
     </div>
 </footer>
+
+
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#buttonCancel").on("click", function (){
+            window.location="[[@{/console/itemlist}]]";
+        });
+    });
+</script>
 </html>

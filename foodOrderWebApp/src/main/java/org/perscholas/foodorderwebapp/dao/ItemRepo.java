@@ -1,13 +1,9 @@
 package org.perscholas.foodorderwebapp.dao;
 
-import org.perscholas.foodorderwebapp.models.Role;
+import org.perscholas.foodorderwebapp.models.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface RoleRepo extends JpaRepository<Role, Long> {
-
-    Role findByRole(String role);
-
+public interface ItemRepo extends JpaRepository<Item, Long> {
 }

@@ -14,8 +14,9 @@ import javax.validation.constraints.NotBlank;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    Integer id;
+    Long id;
     @NonNull @NotBlank
     @Column(length = 25, unique = true)
     String role;

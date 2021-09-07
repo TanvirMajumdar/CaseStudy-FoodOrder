@@ -1,7 +1,5 @@
 package org.perscholas.foodorderwebapp.controllers;
 
-import org.perscholas.foodorderwebapp.dao.RoleRepo;
-import org.perscholas.foodorderwebapp.dao.UserRepo;
 import org.perscholas.foodorderwebapp.models.Role;
 import org.perscholas.foodorderwebapp.models.User;
 import org.perscholas.foodorderwebapp.services.UserService;
@@ -19,19 +17,12 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepo userRepo;
-
-    @Autowired
     private UserService userService;
-
-    @Autowired
-    private RoleRepo roleRepo;
-
 
     //user sign up
     @GetMapping("/signup")
     public String signup(Model model){
-        List<Role> listRoles=roleRepo.findAll();
+        List<Role> listRoles=userService.listRoles();
         model.addAttribute("listRoles", listRoles);
         model.addAttribute("user", new User());
         return "signup";
@@ -46,28 +37,11 @@ public class UserController {
             model.setViewName("signup");
         }
         else {
-
             userService.saveUser(user);
             model.addObject("user", new User());
             model.setViewName("registration_success");
         }
         return model;
-    }
-
-
-    //to show the user list
-    @GetMapping("/userlist")
-    public String showUserList(Model model){
-        List<User> userList=userRepo.findAll();
-        model.addAttribute("userList", userList);
-        return "userlist";
-    }
-
-    //to delete any user from the user list
-    @RequestMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable(name = "id") long id) {
-        userService.deleteUser(id);
-        return "redirect:/userlist";
     }
 
 }
