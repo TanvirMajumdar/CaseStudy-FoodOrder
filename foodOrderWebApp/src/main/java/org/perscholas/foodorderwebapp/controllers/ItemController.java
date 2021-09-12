@@ -25,47 +25,4 @@ public class ItemController {
         model.addAttribute("foodItems", foodItems);
         return "menu";
     }
-
-    //add food item to the cart
-    @GetMapping("/user/addToCart/{id}")
-    public String addToCart(@PathVariable (value = "id") Long id, Model model, HttpSession session) {
-
-        Item item = itemService.getItemById(id);
-        if (session.getAttribute("process") == null) {
-            Map<String, Float> cart = new HashMap<>();
-            cart.put(item.getItemName(), item.getItemPrice());
-            session.setAttribute("process", cart);
-            model.addAttribute("cart", cart);
-            Float sum = 0.0f;
-            for (Float val : cart.values()) {
-                sum += val;
-            }
-            model.addAttribute("sum", sum);
-        } else {
-            Map<String, Float> cart = (Map<String, Float>) session.getAttribute("process");
-            cart.put(item.getItemName(), item.getItemPrice());
-            session.setAttribute("process", cart);
-            model.addAttribute("cart", cart);
-            Float sum = 0.0f;
-            for (Float val : cart.values()) {
-                sum += val;
-            }
-            model.addAttribute("sum", sum);
-        }
-        return "/show_cart";
-    }
-
-    //show the cart
-    @GetMapping("/user/show_cart")
-    public String cart(HttpSession session, Model model) {
-        Map<String, Float> cart = (Map<String, Float>) session.getAttribute("process");
-        model.addAttribute("cart", cart);
-        Float sum = 0.0f;
-        for (Float val : cart.values()) {
-            sum += val;
-        }
-        model.addAttribute("sum", sum);
-        return "/show_cart";
-    }
-
 }

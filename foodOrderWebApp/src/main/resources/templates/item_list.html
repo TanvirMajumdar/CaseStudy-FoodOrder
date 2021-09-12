@@ -55,6 +55,11 @@
                             <a class="nav-link" th:href="@{/menu}">Menu</a>
                         </li>
                     </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/shoppingCart}">Cart</a>
+                        </li>
+                    </div>
 
                     <div sec:authorize="hasAuthority('ADMIN')">
                         <li class="nav-item dropdown">
@@ -96,7 +101,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Price</th>
-                            <th>Actions</th>
+                            <th style="text-align: center">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -105,9 +110,9 @@
                             <td th:text="${item.itemName}">Name</td>
                             <td th:text="${item.itemDescription}">Description</td>
                             <td th:text="${item.itemPrice}">Price</td>
-                            <td>
-                               <a th:href="@{/console/updateItem/{id}(id=${item.itemId})}">Update</a>
-                               <a th:href="@{/console/deleteItem/{id}(id=${item.itemId})}">Delete</a>
+                            <td style="text-align: center">
+                               <a class="btn btn-primary" th:href="@{/console/updateItem/{id}(id=${item.itemId})}">Update</a>
+                               <a class="btn btn-danger" th:href="@{/console/deleteItem/{id}(id=${item.itemId})}">Delete</a>
                             </td>
                         </tr>
                         </tbody>
@@ -116,9 +121,12 @@
 </main>
 
 
-<footer class="footer mt-auto py-3 bg-light text-center fixed-bottom">
+<footer class="footer text-center fixed-bottom" style="background-color:brown;">
     <div class="container">
-        <span class="text-muted"><i class="fas fa-copyright"></i> 2021 A-Ha Food</span>
+        <i class="fab fa-facebook-square fa-lg"></i>
+        <i class="fab fa-twitter-square fa-lg"></i>
+        <i class="fab fa-pinterest-square fa-lg"></i>
+        <p id="copyright"><i class="fas fa-copyright"></i> 2021 A-Ha Food</p>
     </div>
 </footer>
 <script src="/js/bootstrap.bundle.min.js"></script>

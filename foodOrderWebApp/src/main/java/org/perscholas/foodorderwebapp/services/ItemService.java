@@ -39,5 +39,9 @@ public class ItemService {
         this.itemRepo.deleteById(itemId);
     }
 
+    public Optional<Item> findById(Long id) {
+        return itemRepo.findById(id);
+    }
+
 
 }

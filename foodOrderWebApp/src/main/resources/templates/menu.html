@@ -55,6 +55,11 @@
                             <a class="nav-link" th:href="@{/menu}">Menu</a>
                         </li>
                     </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/shoppingCart}">Cart</a>
+                        </li>
+                    </div>
 
                     <div sec:authorize="hasAuthority('ADMIN')">
                         <li class="nav-item dropdown">
@@ -73,6 +78,11 @@
                             <a class="nav-link" th:href="@{/logout}">Logout</a>
                         </li>
                     </div>
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/contact}">Contact Us</a>
+                        </li>
+                    </div>
 
                 </ul>
             </div>
@@ -80,7 +90,7 @@
     </nav>
 </header>
 
-<main class="container" style="margin-top: 200px">
+<main class="container" style="margin-top: 100px">
                 <div>
                     <h3 style="text-align: center">Menu</h3>
                 </div>
@@ -102,7 +112,7 @@
                             <td th:text="${foodItem.itemDescription}">Description</td>
                             <td th:text="${foodItem.itemPrice}">Price</td>
                             <td>
-                                <a th:href="@{/user/addToCart/{id}(id=${foodItem.itemId})}">Add To Cart</a>
+                                <a th:href="@{/shoppingCart/addItem/{id}(id=${foodItem.itemId})}">Add To Cart</a>
                             </td>
                         </tr>
                         </tbody>
@@ -111,9 +121,12 @@
 </main>
 
 
-<footer class="footer mt-auto py-3 bg-light text-center fixed-bottom">
+<footer class="footer text-center fixed-bottom" style="background-color:brown;">
     <div class="container">
-        <span class="text-muted"><i class="fas fa-copyright"></i> 2021 A-Ha Food</span>
+        <i class="fab fa-facebook-square fa-lg"></i>
+        <i class="fab fa-twitter-square fa-lg"></i>
+        <i class="fab fa-pinterest-square fa-lg"></i>
+        <p id="copyright"><i class="fas fa-copyright"></i> 2021 A-Ha Food</p>
     </div>
 </footer>
 

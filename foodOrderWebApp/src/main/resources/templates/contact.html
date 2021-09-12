@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org http://www.thymeleaf.org
+  http://www.thymeleaf.org/thymeleaf-extras-springsecurity4 http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>A-HA Food</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+<body class="d-flex flex-column h-100">
+
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" th:href="@{/}">A-HA FOOD</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <div sec:authorize="isAuthenticated()">
+              <a class="nav-link active" aria-current="page" th:href="@{/}">User: <span sec:authentication="name"></span> Privileges: <span sec:authentication="principal.authorities"></span></a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+          </li>
+          <div sec:authorize="isAnonymous()">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/login}">Log In</a>
+            </li>
+          </div>
+          <div sec:authorize="isAnonymous()">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/signup}">Create Account</a>
+            </li>
+          </div>
+          <div sec:authorize="isAuthenticated()">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/menu}">Menu</a>
+            </li>
+          </div>
+          <div sec:authorize="isAuthenticated()">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/shoppingCart}">Cart</a>
+            </li>
+          </div>
+          <div sec:authorize="hasAuthority('ADMIN')">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" th:href="@{/console/users}">Show Users</a>
+                <a class="dropdown-item" th:href="@{/console/itemlist}">Manage Items</a>
+              </div>
+            </li>
+          </div>
+
+          <div sec:authorize="isAuthenticated()">
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/logout}">Logout</a>
+            </li>
+          </div>
+          <div>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{/contact}">Contact Us</a>
+            </li>
+          </div>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="container box" style="margin-top: 100px">
+    <div class="row-flex">
+      <div class="feedback my-2 p-3 border bg-light">
+        <h3>
+          Email
+        </h3>
+        <p>
+            <a href = "mailto:tanvir@yahoo.com?subject = Feedback&body = Message">
+              <button type="submit" class="btn btn-outline-dark">Send Feedback</button>
+            </a>
+        </p>
+      </div>
+      <div class="opening-time my-2 p-3 border bg-light">
+        <h3>
+          Opening Times
+        </h3>
+        <p>
+          <span>Monday—Thursday: 08:00 — 22:00</span>
+          <span>Friday—Saturday: 09:00 — 23:00 </span>
+          <span>Sunday: 10:00 — 17:00</span>
+        </p>
+      </div>
+      <div class="contact-address my-2 p-3 border bg-light">
+        <h3>
+          Contact Us
+        </h3>
+        <p>
+          <span>(319) 555-4444 | </span>
+          <span>2237 Edgemont Ave,</span>
+          <span>Waterloo, 50702 IA</span>
+        </p>
+      </div>
+    </div>
+</main>
+
+<footer class="footer text-center fixed-bottom" style="background-color:brown;">
+  <div class="container">
+    <i class="fab fa-facebook-square fa-lg"></i>
+    <i class="fab fa-twitter-square fa-lg"></i>
+    <i class="fab fa-pinterest-square fa-lg"></i>
+    <p id="copyright"><i class="fas fa-copyright"></i> 2021 A-Ha Food</p>
+  </div>
+</footer>
+</body>
+</html>

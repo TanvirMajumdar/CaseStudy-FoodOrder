@@ -18,4 +18,10 @@ public class HomeController{
         return "login";
     }
 
+    //contact page
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
+
 }

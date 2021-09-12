@@ -55,7 +55,11 @@
                         <a class="nav-link" th:href="@{/menu}">Menu</a>
                     </li>
                     </div>
-
+                    <div sec:authorize="isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/shoppingCart}">Cart</a>
+                        </li>
+                    </div>
                     <div sec:authorize="hasAuthority('ADMIN')">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,6 +77,11 @@
                             <a class="nav-link" th:href="@{/logout}">Logout</a>
                         </li>
                     </div>
+                    <div>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/contact}">Contact Us</a>
+                        </li>
+                    </div>
 
                 </ul>
             </div>
@@ -86,9 +95,9 @@
         <div class="col-4">
             <div class="card text-dark mb-3" style="margin-top: 200px" >
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body  bg-light">
                         <h5 class="card-title">Made Food With Love</h5>
-                        <p class="card-text">More than 10 years of experience in the food industry and considered as one of the top restaurants in the midwest region!</p>
+                        <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere cumque optio quis fugiat! Corrupti error distinctio non provident quia expedita recusandae magnam dolores commodi architecto, fugiat at possimus eligendi nisi!</p>
                     </div>
                 </div>
             </div>
@@ -104,9 +113,12 @@
     </div>
 </main>
 
-<footer class="footer mt-auto py-3 bg-light text-center fixed-bottom">
+<footer class="footer text-center fixed-bottom" style="background-color:brown;">
     <div class="container">
-        <span class="text-muted"><i class="fas fa-copyright"></i> 2021 A-Ha Food</span>
+        <i class="fab fa-facebook-square fa-lg"></i>
+        <i class="fab fa-twitter-square fa-lg"></i>
+        <i class="fab fa-pinterest-square fa-lg"></i>
+        <p id="copyright"><i class="fas fa-copyright"></i> 2021 A-Ha Food</p>
     </div>
 </footer>
 </body>

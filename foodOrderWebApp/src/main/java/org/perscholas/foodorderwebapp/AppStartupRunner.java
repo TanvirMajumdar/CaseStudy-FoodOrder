@@ -51,13 +51,13 @@ public class AppStartupRunner implements CommandLineRunner {
 //        user.setEmail("tanvir@yahoo.com");
 //        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 //        userRepo.save(user);
-//
-//
-//        itemRepo.save(new Item("Burger", "Hot and Spicy Burger", 2.99f));
-//        itemRepo.save(new Item("Sandwich", "Sliced bread egg sandwich", 1.99f));
-//        itemRepo.save(new Item("French Fries", "Long and thin fries", 0.99f));
+
+
+//        itemRepo.save(new Item("Burger", "Hot and Spicy Burger", 2.99d));
+//        itemRepo.save(new Item("Sandwich", "Sliced bread egg sandwich", 1.99d));
+//        itemRepo.save(new Item("French Fries", "Long and thin fries", 0.99d));
 //        log.info("**** End of sql statements ****");
-//
+
 
     }
 
