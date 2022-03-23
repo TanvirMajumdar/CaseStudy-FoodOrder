@@ -26,6 +26,7 @@ public class ShoppingCartController {
         this.itemService = itemService;
     }
 
+    //To show shopping cart
     @GetMapping("/shoppingCart")
     public ModelAndView shoppingCart() {
         ModelAndView modelAndView = new ModelAndView("/shoppingCart");
@@ -34,12 +35,14 @@ public class ShoppingCartController {
         return modelAndView;
     }
 
+    //add item to cart
     @GetMapping("/shoppingCart/addItem/{itemId}")
     public ModelAndView addProductToCart(@PathVariable("itemId") Long itemId) {
         itemService.findById(itemId).ifPresent(shoppingCartService::addItem);
         return shoppingCart();
     }
 
+    //remove item from cart
     @GetMapping("/shoppingCart/removeItem/{itemId}")
     public ModelAndView removeProductFromCart(@PathVariable("itemId") Long itemId) {
         itemService.findById(itemId).ifPresent(shoppingCartService::removeItem);
@@ -51,8 +54,6 @@ public class ShoppingCartController {
         ModelAndView modelAndView = new ModelAndView("/confirmation");
         modelAndView.addObject("items", shoppingCartService.getItemsInCart());
         modelAndView.addObject("total", shoppingCartService.getTotal().toString());
-
-
         return modelAndView;
     }
 }

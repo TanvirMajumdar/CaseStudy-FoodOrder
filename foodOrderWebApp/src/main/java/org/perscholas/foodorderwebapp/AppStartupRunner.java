@@ -43,21 +43,15 @@ public class AppStartupRunner implements CommandLineRunner {
 //
 //        User user=new User();
 //        Role userRole = roleRepo.findByRole("ADMIN");
-//        user.setUsername("user21");
+//        user.setUsername("user12");
 //        user.setPassword("codejava");
 //        user.setPassword("$2a$09$VU9BvQZkoDjze4gPZStb2euI9Elvni5WYOGuQ8QactMXLOL.kk28.");
-//        user.setFirstName("tanvir");
-//        user.setLastName("majumdar");
-//        user.setEmail("tanvir@yahoo.com");
+//        user.setFirstName("Ryan");
+//        user.setLastName("gosling");
+//        user.setEmail("Ryan@yahoo.com");
 //        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 //        userRepo.save(user);
-
-
-//        itemRepo.save(new Item("Burger", "Hot and Spicy Burger", 2.99d));
-//        itemRepo.save(new Item("Sandwich", "Sliced bread egg sandwich", 1.99d));
-//        itemRepo.save(new Item("French Fries", "Long and thin fries", 0.99d));
 //        log.info("**** End of sql statements ****");
-
 
     }
 
