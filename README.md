@@ -24,9 +24,9 @@ User Stories:
 
 
 Tech Stack Selected:
-•	Frontend: HTML, CSS, Bootstrap
+•	Frontend: HTML, CSS, Bootstrap, Thymeleaf
 •	Business Logic: Java
-•	Backend: Spring Boot, Thymeleaf, Hibernate, JPA, Lombok
+•	Backend: Spring Boot, Hibernate, JPA, Lombok
 •	Data Layer: MariaDB
 •	Build Automation Tool: Apache Maven
 •	Web Server: Tomcat
